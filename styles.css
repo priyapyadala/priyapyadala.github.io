@@ -380,19 +380,6 @@ h1 .dim { color: rgba(25, 79, 127, 0.38); }
   margin-bottom: 24px;
 }
 
-.hero-proof {
-  display: inline-flex; align-items: center; gap: 10px;
-  color: var(--teal); font-size: 13px; font-weight: 600;
-  margin-top: 10px;
-  justify-content: center;
-}
-.hero-proof::before {
-  content: '';
-  display: inline-block;
-  width: 20px; height: 1px;
-  background: var(--dim);
-}
-
 /* stats strip */
 .stats {
   margin-top: 56px;
@@ -574,7 +561,7 @@ section { padding: 88px 0; scroll-margin-top: 94px; position: relative; z-index:
   padding-top: 14px;
   border-top: 1px solid var(--line);
   color: var(--teal);
-  font-size: 12px; font-weight: 600;
+  font-size: 14px; font-weight: 600;
   letter-spacing: 0.01em;
   text-align: center;
 }
@@ -608,7 +595,10 @@ section { padding: 88px 0; scroll-margin-top: 94px; position: relative; z-index:
   animation: caseTicker 28s linear infinite;
   will-change: transform;
 }
-.cases-viewport:hover .cases { animation-play-state: paused; }
+@media (hover: hover) and (pointer: fine) {
+  .cases-viewport:hover .cases { animation-play-state: paused; }
+}
+.cases-viewport.is-offscreen .cases { animation-play-state: paused; }
 @keyframes caseTicker {
   0% { transform: translateX(0); }
   100% { transform: translateX(calc(-50% - (var(--case-gap) / 2))); }
@@ -691,7 +681,7 @@ section { padding: 88px 0; scroll-margin-top: 94px; position: relative; z-index:
 }
 .case-result-label {
   color: rgba(18, 58, 92, 0.82);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
   margin-top: 8px;
 }
@@ -1091,7 +1081,6 @@ footer {
   transition: opacity 700ms cubic-bezier(0.16, 1, 0.3, 1),
               transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
   transition-delay: var(--delay, 0ms);
-  will-change: opacity, transform;
 }
 [data-reveal].is-visible {
   opacity: 1;

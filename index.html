@@ -27,7 +27,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Manrope:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700;800&family=Libre+Baskerville:ital,wght@0,400;1,400&family=Manrope:wght@400;500;600;700;800&family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
 
   <script type="application/ld+json">
     {
@@ -75,7 +75,6 @@
         <a class="tab-link" href="#work">Case Studies</a>
         <a class="tab-link" href="#testimonials">Testimonials</a>
         <a class="tab-link" href="#process">Process</a>
-        <a class="tab-link" href="#contact">Contact</a>
       </div>
       <a class="btn btn-gold nav-cta" href="#contact">Book Strategy Call</a>
     </div>
@@ -101,9 +100,6 @@
         <a href="#contact" class="btn btn-gold btn-lg">Get My Growth Roadmap →</a>
         <a href="#work" class="btn btn-lg">See Client Results</a>
       </div>
-      <p class="hero-proof" data-reveal style="--delay:290ms;">
-        Trusted by 40+ brands &nbsp;·&nbsp; 3.8× average ROAS &nbsp;·&nbsp; 96% retention
-      </p>
     </div>
 
     <div class="stats" data-reveal style="--delay:380ms;">
@@ -439,6 +435,17 @@
       });
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
     revealEls.forEach(el => revealObs.observe(el));
+
+    // Pause the client-work ticker when it's off-screen to save CPU/battery
+    const casesViewport = document.querySelector('.cases-viewport');
+    if (casesViewport) {
+      const tickerObs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          casesViewport.classList.toggle('is-offscreen', !e.isIntersecting);
+        });
+      }, { threshold: 0 });
+      tickerObs.observe(casesViewport);
+    }
 
     // Active tab on scroll
     const tabLinks = Array.from(document.querySelectorAll('.tab-link'));
