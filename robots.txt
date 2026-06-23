@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://priyapyadala.github.io/Auraxis/sitemap.xml

@@ -26,7 +26,7 @@ jobs:
       - name: Build publish directory
         run: |
           mkdir -p publish/v2
-          cp index.html styles.css publish/
+          cp index.html styles.css robots.txt sitemap.xml publish/
           cp -r assets publish/
           cp -r v2/* publish/v2/
           if [ -f publish/v2/index_v2.html ]; then mv publish/v2/index_v2.html publish/v2/index.html; fi
